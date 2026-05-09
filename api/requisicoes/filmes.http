@@ -1,0 +1,80 @@
+
+### Requisições para teste da API de filmes
+
+### Teste de rota ping
+@urlBase = http://localhost:4000
+
+GET http://localhost:4000/ping
+
+### Teste de rota filmes
+GET http://localhost:4000/filmes
+
+### Teste de rota diretores
+GET http://localhost:4000/diretores
+
+### Teste de rota atores
+GET http://localhost:4000/atores
+
+###
+GET http://localhost:4000/filmes/FIL001
+
+###
+GET http://localhost:4000/filmes/0
+
+###
+GET http://localhost:4000/filmes/FIL001?ignorar=elenco,diretor,genero
+
+###
+GET {{urlBase}}/filmes/FIL001?ignorar=diretor,genero,elenco
+
+###
+###
+GET {{urlBase}}/filmes/FIL001
+
+###
+GET {{urlBase}}/filmes/oi 
+
+### criar um filme
+###
+@urlBase = http://localhost:4000
+
+### Atualizar filme existente
+PUT {{urlBase}}/filmes/FIL003
+Content-Type: application/json
+
+{
+  "titulo": "Central do Brasil (Versão Restaurada)",
+  "ano": 1999,
+  "sinopse": "Versão restaurada do clássico brasileiro."
+}
+
+
+### Criar um novo filme
+POST {{urlBase}}/filmes
+Content-Type: application/json
+
+{
+  "id": "FIL003",
+  "titulo": "Central do Brasil",
+  "ano": 1998,
+  "genero": [
+    { "id": "GEN004", "nome": "Drama" }
+  ],
+  "diretor": {
+    "id": "DIR003",
+    "nome": "Walter Salles",
+    "nascimento": "1956-04-12",
+    "nacionalidade": "Brasileiro"
+  },
+  "elenco": [
+    {
+      "id": "ATR007",
+      "nome": "Fernanda Montenegro",
+      "papel": "Dora",
+      "nascimento": "1929-10-16",
+      "nacionalidade": "Brasileira",
+      "biografia": "Atriz brasileira indicada ao Oscar por Central do Brasil."
+    }
+  ],
+  "sinopse": "Uma professora aposentada escreve cartas para analfabetos na estação Central do Brasil."
+}
