@@ -1,6 +1,6 @@
-import { Genero } from "./genero.js";
-import { Diretor } from "./diretor.js";
-import { Ator } from "./ator.js";
+import { Genero } from "./genero";
+import { Diretor } from "./diretor";
+import { Ator } from "./ator";
 
 export interface Filme {
   id: string;

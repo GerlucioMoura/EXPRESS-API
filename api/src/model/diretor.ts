@@ -1,4 +1,4 @@
-export interface Diretor{
+export interface Diretor {
     id: string;
     nome: string;   
     nascimento: string;
