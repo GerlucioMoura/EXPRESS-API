@@ -1,13 +1,13 @@
-import { Router, Request, Response } from "express";
-import { filmes } from "../dados/filmes";
-import { Filme } from "../model/filme";
+import { Router } from "express";
+import { listarFilmes, buscarFilmePorId, adicionarFilme, atualizarFilme, removerFilme } from "../controllers/filmesController";
 
 const router = Router();
 
-router.get("/", (req: Request, res: Response) => {
-  res.json(filmes);
-});
-
-// outras rotas aqui...
+router.get("/", listarFilmes);
+router.get("/:id", buscarFilmePorId);
+router.post("/", adicionarFilme);
+router.put("/:id", atualizarFilme);
+router.delete("/:id", removerFilme);
 
 export default router;
+
