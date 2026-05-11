@@ -1,4 +1,4 @@
-
+dia 08 / 05 / 2026
 Refatorar rotas para usar controllers
 
 # Descrição (explica o que mudou e por quê)
@@ -18,6 +18,8 @@ Refatorar rotas para usar controllers
 - Manter main.ts enxuto e organizado
 
 Autor: Gerlúcio Moura
+
+dia 10 05 2026
 middleware no Express. 
 Middleware é basicamente uma função que fica 
 “no meio do caminho” entre a requisição e a resposta, 
@@ -45,3 +47,10 @@ git add .
 git commit -F gitmessage.txt
 
 git push origin master
+
+dia 11 / 05 /2026
+Refatorar rotas para usar controllers
+
+- Separar lógica das rotas em arquivos controllers
+- Manter main.ts enxuto e organizado
+- Facilitar manutenção futura e integração com banco de dados
