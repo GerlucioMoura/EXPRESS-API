@@ -32,3 +32,16 @@ EXPRESS-API/
  │    ├── logger.ts
  │    ├── autenticar.ts
  │    └── errorHandler.ts
+
+📌 Dicas para o fluxo de trabalho
+Editar código → mexe nos arquivos (main.ts, middlewares, etc.).
+
+Testar localmente → roda npm run dev e acessa as rotas no navegador.
+
+Salvar progresso no Git
+
+git add .
+
+git commit -F gitmessage.txt
+
+git push origin master
