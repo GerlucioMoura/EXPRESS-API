@@ -1,0 +1,20 @@
+
+Refatorar rotas para usar controllers
+
+# Descrição (explica o que mudou e por quê)
+- Separar lógica das rotas em arquivos controllers
+- Manter main.ts enxuto e organizado
+- Facilitar manutenção futura e integração com banco de dados
+
+# Rodapé (opcional: issue, referência, autor)
+Issue: #123
+Autor: Gerlúcio Moura
+
+Refatorar rotas para usar controllers
+
+- Separar lógica das rotas em arquivos controllers
+- Criar filmesController.ts e infoController.ts
+- Ajustar routes/filmes.ts e routes/info.ts para chamar controllers
+- Manter main.ts enxuto e organizado
+
+Autor: Gerlúcio Moura
