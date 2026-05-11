@@ -18,3 +18,17 @@ Refatorar rotas para usar controllers
 - Manter main.ts enxuto e organizado
 
 Autor: Gerlúcio Moura
+middleware no Express. 
+Middleware é basicamente uma função que fica 
+“no meio do caminho” entre a requisição e a resposta, 
+podendo interceptar, modificar ou validar antes de 
+chegar na rota final.
+
+EXPRESS-API/
+ ├── api/
+ ├── controllers/
+ ├── routes/
+ ├── middlewares/
+ │    ├── logger.ts
+ │    ├── autenticar.ts
+ │    └── errorHandler.ts
