@@ -2,10 +2,12 @@ import { Request, Response } from "express";
 import { filmes } from "../dados/filmes";
 import { Filme } from "../model/filme";
 
+// Lista
 export const listarFilmes = (req: Request, res: Response) => {
   res.json(filmes);
 };
 
+// Busca filme por ID
 export const buscarFilmePorId = (req: Request, res: Response) => {
   const { id } = req.params;
 const filme = filmes.find((f: Filme) => f.id.toLowerCase() === id.toLowerCase());
@@ -17,6 +19,7 @@ const filme = filmes.find((f: Filme) => f.id.toLowerCase() === id.toLowerCase())
   res.json(filme);
 };
 
+// Adicionar novofilme
 export const adicionarFilme = (req: Request, res: Response) => {
   const { titulo, ano } = req.body;
 
@@ -40,11 +43,11 @@ export const adicionarFilme = (req: Request, res: Response) => {
 };
 
 
-
 filmes.push(novoFilme);
 res.status(201).json({ msg: "Filme cadastrado com sucesso!", filme: novoFilme });
 };
 
+// Atualizar filme  
 export const atualizarFilme = (req: Request, res: Response) => {
   const { id } = req.params;
   const { titulo, ano } = req.body;
@@ -59,7 +62,7 @@ export const atualizarFilme = (req: Request, res: Response) => {
   res.json({ msg: "Filme atualizado com sucesso!", filme: filmes[index] });
 };
 
-
+// Remover filme
 export const removerFilme = (req: Request, res: Response) => {
   const { id } = req.params;
 const index = filmes.findIndex((f: Filme) => f.id.toLowerCase() === id.toLowerCase());

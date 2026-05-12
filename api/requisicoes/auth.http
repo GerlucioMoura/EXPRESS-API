@@ -1,0 +1,49 @@
+@urlBase = http://localhost:4000
+
+### login
+# @name postLogin
+POST {{urlBase}}/login
+Content-Type: application/json
+
+{
+  "email": "gerlucio@example.com",
+  "senha": "123456"
+}
+
+### cadastrar usuário
+POST {{urlBase}}/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Zé Bode",
+  "email": "zebode@example.com",
+  "senha": "123456"
+}
+
+### token
+@token = {{postLogin.response.body.token}}
+
+### rota protegida
+GET {{urlBase}}/filmes
+Authorization: Bearer {{token}}
+
+###
+POST http://localhost:4000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Zé Butico",
+  "email": "zebutico@example.com",
+  "senha": "654321"
+}
+
+###
+POST http://localhost:4000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Mane Gambar",
+  "email": "manegambar@example.com",
+  "senha": "654321"
+}
+

@@ -26,6 +26,93 @@ Middleware é basicamente uma função que fica
 podendo interceptar, modificar ou validar antes de 
 chegar na rota final.
 
+Estrutura de pastas do projeto
+EXPRESS-API/
+ api/
+ ├── dist/                # código compilado (se usar TypeScript)
+ ├── node_modules/        # dependências
+ ├── requisicoes/         # seus arquivos .http para testar requisições
+ └── src/
+      ├── controllers/    
+      │     ├── filmesController.ts
+      │     ├── infoController.ts
+      │     └── autenticacao/
+      │            └── authController.ts   # função de login
+      ├── middlewares/
+      │     └── authMiddleware.ts          # validação do token JWT
+      ├── dados/
+      │     └── filmes.ts                  # dados em memória
+      ├── model/
+      │     └── filme.ts                   # definição de tipos
+      ├── routes/
+      │     ├── filmes.ts                  # rotas de filmes
+      │     └── info.ts                    # rotas de info
+      └── main.ts                          # ponto de entrada da aplicação
+
+
+📌 Dicas para o fluxo de trabalho
+Editar código → mexe nos arquivos (main.ts, middlewares, etc.).
+
+Testar localmente → roda npm run dev e acessa as rotas no navegador.
+
+Salvar progresso no Git
+
+git add .
+
+git commit -F gitmessage.txt
+
+git push origin master
+
+dia 11 / 05 /2026
+Refatorar rotas para usar controllers
+
+- Separar lógica das rotas em arquivos controllers
+- Manter main.ts enxuto e organizado
+- Facilitar manutenção futura e integração com banco de dados
+
+📂 Estrutura final organizada
+api/
+ └── src/
+      ├── controllers/
+      │     ├── filmesController.ts
+      │     ├── infoController.ts
+      │     ├── usuariosController.ts        # cadastro de usuários
+      │     └── autenticacao/
+      │            └── authController.ts     # login
+      ├── middlewares/
+      │     └── authMiddleware.ts            # validação JWT
+      ├── routes/
+      │     ├── filmes.ts
+      │     ├── info.ts
+      │     └── usuarios.ts                  # rotas de usuários
+      └── main.ts                            # ponto de entrada
+
+dia 08 / 05 / 2026
+Refatorar rotas para usar controllers
+
+- Separar lógica das rotas em arquivos controllers
+- Manter main.ts enxuto e organizado
+- Facilitar manutenção futura e integração com banco de dados
+
+Issue: #123
+Autor: Gerlúcio Moura
+
+Refatorar rotas para usar controllers
+
+- Separar lógica das rotas em arquivos controllers
+- Criar filmesController.ts e infoController.ts
+- Ajustar routes/filmes.ts e routes/info.ts para chamar controllers
+- Manter main.ts enxuto e organizado
+
+Autor: Gerlúcio Moura
+
+dia 10 05 2026
+middleware no Express. 
+Middleware é basicamente uma função que fica 
+“no meio do caminho” entre a requisição e a resposta, 
+podendo interceptar, modificar ou validar antes de 
+chegar na rota final.
+
 EXPRESS-API/
  ├── api/
  ├── controllers/
