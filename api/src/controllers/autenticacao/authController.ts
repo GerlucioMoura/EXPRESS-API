@@ -2,16 +2,14 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
-// Usuário de exemplo (depois você pode buscar em banco de dados)
 const usuarioFake = {
   id: "USR001",
   nome: "Gerlúcio Moura",
   email: "gerlucio@example.com",
-  senhaHash: bcrypt.hashSync("123456", 8) // senha criptografada
+  senhaHash: bcrypt.hashSync("123456", 8)
 };
 
-// Segredo do JWT (ideal usar variável de ambiente)
-const segredoJWT = "minha_chave_secreta";
+const segredoJWT = process.env.SEGREDO_JWT || "minha_chave_secreta";
 
 export const login = (req: Request, res: Response) => {
   const { email, senha } = req.body;
@@ -31,6 +29,13 @@ export const login = (req: Request, res: Response) => {
     segredoJWT,
     { expiresIn: "1h" }
   );
+
+  // Decodificar token para logar payload
+  const decoded = jwt.decode(token) as any;
+  console.log("Token gerado com payload:");
+  console.log(`Email: ${decoded.email}`);
+  console.log(`Emitido em (iat): ${decoded.iat} → ${new Date(decoded.iat * 1000).toISOString()}`);
+  console.log(`Expira em (exp): ${decoded.exp} → ${new Date(decoded.exp * 1000).toISOString()}`);
 
   res.json({ msg: "Login realizado com sucesso!", token });
 };
