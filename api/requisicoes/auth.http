@@ -1,17 +1,19 @@
 @urlBase = http://localhost:4000
 
-### login
-# @name postLogin
-POST {{urlBase}}/login
+### 1. Cadastrar usuário
+# @name postUsuario
+POST {{urlBase}}/usuarios
 Content-Type: application/json
 
 {
+  "nome": "Gerlucio",
   "email": "gerlucio@example.com",
   "senha": "123456"
 }
 
-### cadastrar usuário
-POST {{urlBase}}/usuarios
+### 2. Login com usuário cadastrado
+# @name postLogin
+POST {{urlBase}}/login
 Content-Type: application/json
 
 {
@@ -20,8 +22,12 @@ Content-Type: application/json
   "senha": "123456"
 }
 
-### token
+### 3. Guardar token retornado do login
 @token = {{postLogin.response.body.token}}
+
+### 4. Acessar rota protegida (filmes)
+GET {{urlBase}}/filmes
+Authorization: Bearer {{token}}
 
 ### rota protegida
 GET {{urlBase}}/filmes

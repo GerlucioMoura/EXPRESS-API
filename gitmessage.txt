@@ -141,3 +141,80 @@ Refatorar rotas para usar controllers
 - Separar lógica das rotas em arquivos controllers
 - Manter main.ts enxuto e organizado
 - Facilitar manutenção futura e integração com banco de dados
+
+Estrutura de arquivos e pastas
+
+src/
+ ├── controllers/
+ │     └── usuariosController.ts   # cadastro de usuários
+ ├── middlewares/
+ │     └── authMiddleware.ts       # validação JWT
+ ├── routes/
+ │     └── usuarios.ts             # rotas de usuários
+ └── main.ts                       # ponto de entrada
+
+Passo a passo
+
+1. Instalar dependências
+No terminal do VS Code, dentro da pasta do projeto:
+
+npm install bcrypt
+npm install --save-dev @types/bcrypt
+
+O bcrypt faz a criptografia, e o @types/bcrypt 
+adiciona os tipos para TypeScript.
+
+2. Cadastro de usuário com senha criptografada
+No usuariosController.ts
+
+3. Login comparando senha com hash
+No authController.ts
+
+4. Fluxo completo
+Cadastrar usuário → senha é criptografada com bcrypt.hashSync.
+
+Salvar no banco → apenas o hash vai para o banco, nunca a senha pura.
+
+Login → compara senha digitada com hash usando bcrypt.compareSync.
+
+Token JWT → gerado apenas se a senha for válida.
+
+5. Segurança extra
+Use salt rounds maiores (10–12) para aumentar a segurança.
+
+Armazene o segredo JWT em variável de ambiente (.env).
+
+Nunca logue a senha ou hash no terminal.
+
+🎯 Resumindo
+Instalar bcrypt e @types/bcrypt.
+
+No cadastro, usar bcrypt.hashSync(senha, 10) para salvar no banco.
+
+No login, usar bcrypt.compareSync(senhaDigitada, senhaHash) para validar.
+
+Estrutura organizada em controllers/usuariosController.ts e 
+controllers/autenticacao/authController.ts.
+
+Como funciona
+Cadastro (POST /usuarios)
+
+Senha é criptografada com bcrypt.hashSync.
+
+Resposta: 201 Created com senhaHash.
+
+Login (POST /login)
+
+Senha digitada é comparada com o hash usando bcrypt.compareSync.
+
+Se válida, retorna o token JWT.
+
+Token (@token)
+
+A linha @token = {{postLogin.response.body.token}} guarda o token automaticamente.
+
+Rota protegida (GET /filmes)
+
+Só funciona se o token for válido.
+
+Se inválido ou expirado → 401 Unauthorized.
